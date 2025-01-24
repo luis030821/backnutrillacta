@@ -1,0 +1,47 @@
+{
+  "packageId": "com.llampukaq.www.twa",
+  "host": "www.llampukaq.com",
+  "name": "Llampukaq Technology",
+  "launcherName": "Llampukaq",
+  "display": "standalone",
+  "themeColor": "#181811",
+  "themeColorDark": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#181811",
+  "enableNotifications": true,
+  "startUrl": "/signin",
+  "iconUrl": "https://www.llampukaq.com/icons/logo512.png",
+  "maskableIconUrl": "https://www.llampukaq.com/icons/logo512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "/home/luis/programing/llampukaq/android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "3",
+  "appVersionCode": 3,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://www.llampukaq.com/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": true
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://www.llampukaq.com/",
+  "minSdkVersion": 19,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appVersion": "3"
+}

@@ -1,0 +1,147 @@
+@font-face {
+  font-family: "bold-title";
+  src: url("/font/bold1.ttf");
+}
+
+@font-face {
+  font-family: "texto-parrafo";
+  src: url("/font/texto.ttf");
+}
+
+@font-face {
+  font-family: "title-second";
+  src: url("/font/colvetica.otf");
+}
+@font-face {
+  font-family: "title-third";
+  src: url("/font/colvetica1.otf");
+}
+
+@font-face {
+  font-family: "title-texto";
+  src: url("/font/gh2.ttf");
+}
+@font-face {
+  font-family: "subtitulos";
+  src: url("/font/subtitulos.ttf");
+}
+
+.title-first {
+  font-family: "bold-title";
+}
+.title-texto {
+  font-family: "title-texto";
+}
+.title-second {
+  font-family: "title-second";
+}
+.title-third {
+  font-family: "title-third";
+}
+
+.title-font-main {
+  font-family: "bold-title";
+  line-height: normal;
+  letter-spacing: 0.09rem;
+}
+
+.bg-text {
+  background: linear-gradient(
+    294deg,
+    rgb(207, 101, 228) 29%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  /* background: linear-gradient(rgb(95, 9, 121) 35%, rgba(0,212,255,1) 100%);; */
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-text_0 {
+  background: linear-gradient(
+    294deg,
+    rgba(0, 212, 255, 1) 29%,
+    rgb(207, 101, 228) 100%
+  );
+  /* background: linear-gradient(rgb(95, 9, 121) 35%, rgba(0,212,255,1) 100%);; */
+  background-clip: text;
+  color: transparent;
+}
+
+.texto-parrafo {
+  font-family: "texto-parrafo";
+}
+
+.text-opacado-white {
+  color: #96969d;
+}
+
+.active-trans {
+  transition: all 1.2s;
+}
+
+.hover-dinamico {
+  transition: all 0.3s;
+}
+
+.hover-dinamico:hover div > svg {
+  stroke: #60a5fa;
+}
+.hover-dinamico:hover div > h1,
+p {
+  color: #60a5fa;
+}
+
+.inverse {
+  background-color: #f5f3f2;
+  color: #121212;
+}
+.full-bleed {
+  box-shadow: 0 0 0 100vmax #f5f3f2;
+  clip-path: inset(0 -100vmax);
+  padding: 5rem 0 5rem 0;
+}
+
+.subtitulos {
+  font-family: "title-texto";
+  font-weight: 900;
+}
+
+.svg-color svg {
+  stroke: #22c55e;
+}
+/* Agrega estilos adicionales según sea necesario */
+@keyframes holi {
+  from {
+    background: red;
+  }
+  to {
+    background: #60a5fa;
+  }
+}
+
+.bg-dinamic {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media screen and (min-width: 786px) {
+  .bg-dinamic {
+    background-image: url("https://wsrv.nl/?url=https://app.llampukaq.com/backgrounds/shape.png&output=webp&w=1200&q=10");
+  }
+}
+.dinamic-bg-company {
+  background-image: url("https://app.llampukaq.com/backgrounds/company.png");
+}
+
+.bg-dinamic-team {
+  background-image: url("https://app.llampukaq.com/backgrounds/team.png");
+  background-size: contain;
+
+  background-repeat: no-repeat;
+}
+
+.ani {
+  animation: holi linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 600px;
+}

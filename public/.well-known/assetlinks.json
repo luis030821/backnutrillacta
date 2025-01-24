@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.llampukaq.www.twa",
+      "sha256_cert_fingerprints": [
+        "19:E3:BD:A0:5C:F3:73:A7:F6:E2:73:4E:3D:63:0F:D2:F8:9D:6E:AC:00:7A:E3:12:46:0D:E4:AF:97:3C:FE:47"
+      ]
+    }
+  }
+]

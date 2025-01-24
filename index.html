@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .desplazamiento {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .desplazamiento p {
+        position: absolute;
+        top: 0;
+        font-size: xx-small;
+        /* animation: desplazar 10s linear infinite; */
+      }
+
+      @keyframes desplazar {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="desplazamiento">
+      <p>Texto que se desplaza de izquierda a derecha</p>
+    </div>
+  </body>
+</html>
