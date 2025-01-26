@@ -1,6 +1,5 @@
-import { User } from "@/interface";
-import { useUser } from "@llampukaq/realm";
-import { useState, useCallback } from "react";
+import { useApp } from "@llampukaq/realm";
+import { useState, useCallback, useEffect } from "react";
 
 const API_BASE_URL = "https://nutrillacta.llampukaq.workers.dev/";
 
@@ -27,7 +26,9 @@ export const useNutrillactaApi = () => {
     setData(result);
     return result;
   }, []);
-  const { user } = useUser<User>();
+  const { currentUser } = useApp();
+  const user = { email: currentUser?.profile.email };
+  
   // Add a user
   const addUser = useCallback(
     async (email: string) => {
@@ -42,7 +43,33 @@ export const useNutrillactaApi = () => {
     },
     [fetchApi]
   );
-
+  const deleteUser = useCallback(
+    async (email: string) => {
+      if (!email) throw new Error("Email is required");
+      listUser();
+      return await fetchApi("user", {
+        method: "DELETE",
+        body: JSON.stringify({ email }),
+        headers: {
+          EMAIL: user?.email,
+        },
+      });
+    },
+    [fetchApi]
+  );
+  const [users, setUsers] = useState();
+  const listUser = useCallback(async () => {
+    const res = await fetchApi("", {
+      method: "GET",
+      headers: {
+        EMAIL: user?.email,
+      },
+    });
+    setUsers(res.keys);
+  }, [fetchApi]);
+  useEffect(() => {
+    listUser();
+  }, []);
   // Get a user
   const getUser = useCallback(
     async (email: string) => {
@@ -58,5 +85,7 @@ export const useNutrillactaApi = () => {
     data,
     addUser,
     getUser,
+    users,
+    deleteUser,
   };
 };

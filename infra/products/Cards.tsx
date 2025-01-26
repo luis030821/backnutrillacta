@@ -1,15 +1,28 @@
-import { Button, H1, Icons, ModalDownTrigger, P } from "cllk";
+import {
+  Button,
+  FilesImg,
+  H1,
+  Icons,
+  Img,
+  modal,
+  ModalDownTrigger,
+  P,
+  useMessage,
+  useUploadImages,
+} from "cllk";
 import React, { useCallback, useState } from "react";
 import useCards from "./hooks/useCards";
 import { useCategories } from "./hooks/useCategories";
 import { useProducts } from "./hooks/useProducts";
 import { useNutrillactaApi } from "@/hooks/useNutrillacta";
 
+import { useImages } from "@/hooks/useImages";
+
 function Cards({ setInformation }: any) {
   const { cards } = useCards();
   const { setCardId, getCategories, setCard: setC } = useCategories();
   const { setCardId: set, setCard } = useProducts();
-  const { addUser, loading, error } = useNutrillactaApi();
+  const { addUser, loading, error, users, deleteUser } = useNutrillactaApi();
   const [email, setEmail] = useState("");
   const handleAddUser = async () => {
     try {
@@ -46,12 +59,6 @@ function Cards({ setInformation }: any) {
                 <Icons icon="IconMenuOrder" />
                 <H1>Categoria</H1>
               </div>
-
-              {x.private && (
-                <div className="dark:bg-green-900 rounded-xl flex justify-center px-2">
-                  <P color="text-white">Privado</P>
-                </div>
-              )}
             </div>
           </div>
           <div
@@ -70,20 +77,35 @@ function Cards({ setInformation }: any) {
                 <Icons icon="IconBrandProducthunt" />
                 <H1>Productos</H1>
               </div>
-
-              {x.private && (
-                <div className="dark:bg-green-900 rounded-xl flex justify-center px-2">
-                  <P color="text-white">Privado</P>
-                </div>
-              )}
             </div>
           </div>
         </div>
       ))}
       <ModalDownTrigger
+        trigger={<Button center>Agregar imagenes</Button>}
+        title="Agregar imagenes"
+      >
+        {(modal) => <Images modal={modal} />}
+      </ModalDownTrigger>
+      <ModalDownTrigger
         trigger={<Button center>Agregar usuario</Button>}
         title="Agregar usuario"
       >
+        <div>
+          {/* @ts-ignore */}
+          {users?.map((x) => (
+            <div className="flex justify-between items-center">
+              <P>{x.name}</P>
+              <div
+                onClick={async () => {
+                  await deleteUser(x.name);
+                }}
+              >
+                <Icons className="stroke-white" icon="IconTrashFilled"></Icons>
+              </div>
+            </div>
+          ))}
+        </div>
         <div className="flex flex-col space-y-4">
           <input
             type="email"
@@ -103,3 +125,56 @@ function Cards({ setInformation }: any) {
 }
 
 export default Cards;
+const Images = ({ modal }: { modal: modal }) => {
+  const { images, updateImages, setImages } = useImages();
+  const [img, setImg] = useState<any>();
+  const { uploadImages } = useUploadImages();
+  const { messagePromise } = useMessage();
+  return (
+    <>
+      <div className="flex gap-1">
+        {images.map((img, index1) => (
+          <div className="w-20 flex flex-col justify-center space-y-2 items-center stroke-white fill-white">
+            <Img src={img}></Img>
+            <div
+              onClick={() => {
+                setImages(images.filter((_, index) => index != index1));
+              }}
+            >
+              <Icons icon="IconTrashFilled" />
+            </div>
+          </div>
+        ))}
+      </div>
+      <FilesImg
+        onClick={async (e) => {
+          //@ts-ignore
+          const res = await uploadImages(e.target.files);
+          setImg(res);
+        }}
+      />
+      {img != undefined && (
+        <Button
+          onClick={(async) => {
+            messagePromise(
+              async () => {
+                modal.close();
+                const isArray = Array.isArray(images);
+                if (isArray) {
+                  updateImages([...(images ?? []), img.src]);
+                } else updateImages([img.src]);
+              },
+              {
+                error: "error en imagen ",
+                pending: "Cargando Imagen",
+                success: "Imagen cargada",
+              }
+            );
+          }}
+        >
+          Guardar
+        </Button>
+      )}
+    </>
+  );
+};

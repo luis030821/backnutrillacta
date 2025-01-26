@@ -1,4 +1,3 @@
-import { Organization } from "@/types/types";
 import { useCollection } from "@llampukaq/realm";
 import { createProviderFn, useMessage, useModal } from "cllk";
 import React, { useEffect, useState } from "react";
@@ -12,7 +11,7 @@ export interface Propierties {
 function usePropertie() {
   const collection = useCollection("product", "properties");
   const { messagePromise } = useMessage();
-  const { organization } = useOrganization<Organization>();
+
   const modal = useModal();
   const [objects, setObjects] = useState<Propierties[]>();
   const handleChange = (
