@@ -2,7 +2,6 @@ import React from "react";
 import { useProductManager } from "./ProductManagementProvider";
 import { useCategories } from "../../hooks/useCategories";
 import { useProperties } from "../../hooks/useProperties";
-import useAddAsset from "@/backend/useAddAsset";
 import {
   Button,
   FilesImg,
@@ -42,8 +41,7 @@ const Single = ({
   } = useProductManager();
   const { categories } = useCategories();
   const { objects } = useProperties();
-  const { addAsset } = useAddAsset();
-  const { uploadImages } = useUploadImages(addAsset);
+  const { uploadImages } = useUploadImages();
   const { message } = useMessage();
 
   return (

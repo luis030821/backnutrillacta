@@ -18,7 +18,6 @@ import {
   useMessage,
 } from "cllk";
 import React from "react";
-import { useClearCache } from "react-cache-state";
 function Widget() {
   const { logout } = useLogoutGoogle();
   const { organization, getOrganization } = useOrganization<Organization>();

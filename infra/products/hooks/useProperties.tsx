@@ -1,6 +1,5 @@
 import { Organization } from "@/types/types";
 import { useCollection } from "@llampukaq/realm";
-import { useOrganization } from "@llampukaq/realm-organizations";
 import { createProviderFn, useMessage, useModal } from "cllk";
 import React, { useEffect, useState } from "react";
 export interface Propierties {

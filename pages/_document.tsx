@@ -1,4 +1,3 @@
-import client from "@/client";
 import { HEAD } from "cllk";
 import { Html, Head, Main, NextScript } from "next/document";
 
@@ -6,26 +5,9 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <HEAD title={client.name} />
-        <meta
-          name="google-site-verification"
-          content="6hwbUKXQITWvtGO9-Hvy06p15mvFJAzdQWZHZeedA98"
-        />
-        <meta
-          name="facebook-domain-verification"
-          content="3etumkk3yu3zdav4vqpoojph5g5srr"
-        />
-        <meta
-          name="keywords"
-          content="HTML, CSS, JavaScript, Web Builder, Llampukaq, Technology, CMS, Gestor, Empresas, Business, Organization"
-        />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <HEAD title={"Nutrillacta"} />
 
-        <meta property="og:url" content="https://app.llampukaq.com/" />
-        <meta
-          name="description"
-          content="Descubre el poder de la gestión empresarial con Llampukaq Technoly, la solución integral para potenciar tu empresa. Maximiza la eficiencia, optimiza procesos, y toma decisiones informadas con nuestra plataforma líder en el mercado. Gestiona recursos, finanzas y proyectos de manera efectiva, impulsando el crecimiento y la rentabilidad de tu negocio. Confía en Llampukaq Technoly para llevar tu empresa hacia el éxito."
-        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
 
         <link rel="apple-touch-icon" href="/icons/logo512.png" />
         <link

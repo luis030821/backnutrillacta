@@ -16,8 +16,6 @@ module.exports = () => {
       "cllk",
       "@llampukaq/realm",
       "@llampukaq/realm-google-provider",
-      "@llampukaq/realm-organizations",
-      "@llampukaq/builder",
       "@llampukaq/icons",
       "@llampukaq/realm-email-provider",
     ],

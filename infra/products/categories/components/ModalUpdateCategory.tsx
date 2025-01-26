@@ -46,10 +46,9 @@ const ModalUpdateCategory = ({
         {(modalImg) => (
           <FilesImg
             onClick={async (e) => {
-              console.log(e.target.files);
               //@ts-ignore
               const res = await uploadImages(e.target.files);
-              console.log(res);
+
               setImg(res);
               modalImg.close();
             }}

@@ -17,7 +17,6 @@ import {
   useUploadImages,
 } from "cllk";
 import RecomendedProductsCreate from "../createProducts/RecomendedProductsCreate";
-import useAddAsset from "@/backend/useAddAsset";
 import { getArrayImages } from "@/services/services";
 import ComboProducts from "../createProducts/ComboProducts";
 
@@ -178,8 +177,7 @@ const Variantes = ({
   handleVariantChange: any;
   removeVariant: any;
 }) => {
-  const { addAsset } = useAddAsset();
-  const { uploadImages } = useUploadImages(addAsset);
+  const { uploadImages } = useUploadImages();
   const { objects } = useProperties();
   return (
     <>
