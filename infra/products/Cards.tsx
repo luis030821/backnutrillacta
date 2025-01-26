@@ -39,11 +39,11 @@ function Cards({ setInformation }: any) {
   };
 
   return (
-    <div className="inline-flex w-full flex-col-reverse sm:flex-col sm:border-r sm:min-h-screen p-3 sm:space-y-2 overflow-x-auto">
+    <div className="inline-flex w-full flex-col-reverse sm:flex-col sm:border-r sm:min-h-screen p-3 space-y-2 overflow-x-auto">
       {cards?.map((x, index) => (
         <div
           key={index}
-          className="border-b pb-2 sm:w-full flex-shrink-0 p-5 sm:p-3 flex flex-col sm:space-y-3 items-center w-full justify-around"
+          className="border-b pb-2 sm:w-full flex-shrink-0 p-5 sm:p-3 flex sm:flex-col space-y-3 items-center w-full justify-around"
         >
           <div
             onClick={() => {
@@ -82,7 +82,7 @@ function Cards({ setInformation }: any) {
         </div>
       ))}
       <ModalDownTrigger
-        trigger={<Button center>Agregar imagenes</Button>}
+        trigger={<Button center>Actualizar web</Button>}
         title="Agregar imagenes"
       >
         {(modal) => <Images modal={modal} />}
@@ -118,6 +118,23 @@ function Cards({ setInformation }: any) {
             {loading ? "Agregando..." : "Agregar Usuario"}
           </Button>
           {error && <P color="text-red-500">Error: {error}</P>}
+        </div>
+      </ModalDownTrigger>
+      <ModalDownTrigger
+        trigger={<Button center>Actualizar web</Button>}
+        title="Actualizar web"
+      >
+        <div className="flex flex-col space-y-4">
+          <Button
+            onClick={() => {
+              fetch(
+                "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/5a391f7a-9c7b-4203-891c-da373d45eeea",
+                { method: "POST" }
+              );
+            }}
+          >
+            Actualizar
+          </Button>
         </div>
       </ModalDownTrigger>
     </div>
