@@ -122,39 +122,7 @@ const Single = ({
                 </Button>
               </div>
             </div>
-            <div className="bg-zinc-800 rounded-3xl w-full p-5">
-              <Text type="BodyMd(Medium)">Tamaño</Text>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3">
-                <Input
-                  value={variant.weight}
-                  onChange={(e) => {
-                    handleVariantChange(e.target.value, index, "weight");
-                  }}
-                  label="Peso(Kg)"
-                />
-                <Input
-                  value={variant.large}
-                  onChange={(e) => {
-                    handleVariantChange(e.target.value, index, "large");
-                  }}
-                  label="Largo(Cm)"
-                />
-                <Input
-                  value={variant.width}
-                  onChange={(e) => {
-                    handleVariantChange(e.target.value, index, "width");
-                  }}
-                  label="Ancho(Cm)"
-                />
-                <Input
-                  value={variant.depth}
-                  onChange={(e) => {
-                    handleVariantChange(e.target.value, index, "depth");
-                  }}
-                  label="Profundida(Cm)"
-                />
-              </div>
-            </div>
+
             <div className="mx-auto py-10 space-x-5 bg-zinc-800 rounded-3xl p-5 flex justify-between items-center">
               <div>
                 <Text type="BodyMd(Medium)">Categorias</Text>
@@ -217,74 +185,6 @@ const Single = ({
                   }
                 />
               </div>
-            </div>
-
-            <div className="bg-zinc-800 rounded-3xl w-full p-5">
-              <Text type="BodyMd(Medium)">
-                Extras agregados por propiedades
-              </Text>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3">
-                {objects
-                  ?.filter((x) => x.use == "normal" || x.use == undefined)
-                  ?.map((x) => (
-                    <Input
-                      value={attributes?.[x.attribute]}
-                      onChange={(e) => {
-                        handleInputChange(e, x.attribute);
-                      }}
-                      label={x.attribute}
-                      required={x.required}
-                      type={x.type}
-                    />
-                  ))}
-                {objects
-                  ?.filter((x) => x.use == "variant")
-                  .map((object) => (
-                    <Input
-                      value={variants?.[index]?.[object.attribute]}
-                      onChange={(e) => {
-                        handleVariantChange(
-                          e.target.value,
-                          index,
-                          object.attribute
-                        );
-                      }}
-                      label={object.attribute}
-                      required={object.required}
-                      type={object.type}
-                    />
-                  ))}
-              </div>
-            </div>
-            {variant.weight != undefined ||
-              variant.large != undefined ||
-              variant.width != undefined ||
-              (variant.depth != undefined && (
-                <SizeProducts variant={variant} index={index} />
-              ))}
-            {recomended?.length != 0 && <RecomendedProductsCreate />}
-            {combo?.length != 0 && <ComboProducts />}
-            <div className="bg-zinc-800 rounded-3xl w-full p-5 space-y-3">
-              <Text type="BodyMd(Medium)">Modulos</Text>
-              <Text type="BodyMd">
-                Bienvenido a los módulos, bloques que ofrecen funcionalidades
-                adicionales. Estas son opcionales, pero necesarias si deseas
-                añadir mayor complejidad a tu aplicación.
-              </Text>
-              <ModalTrigger
-                full
-                title="Agregar modulo"
-                trigger={<Button center>Agregar Modulo</Button>}
-              >
-                {variant.weight == undefined ||
-                  variant.large == undefined ||
-                  variant.width == undefined ||
-                  (variant.depth == undefined && (
-                    <SizeProducts variant={variant} index={index} />
-                  ))}
-                {recomended?.length == 0 && <RecomendedProductsCreate />}
-                {combo?.length == 0 && <ComboProducts />}
-              </ModalTrigger>
             </div>
             <ModalFooter
               onClick={() => {

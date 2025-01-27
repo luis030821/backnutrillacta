@@ -124,18 +124,23 @@ function Cards({ setInformation }: any) {
         trigger={<Button center>Actualizar web</Button>}
         title="Actualizar web"
       >
-        <div className="flex flex-col space-y-4">
-          <Button
-            onClick={() => {
-              fetch(
-                "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/5a391f7a-9c7b-4203-891c-da373d45eeea",
-                { method: "POST" }
-              );
-            }}
-          >
-            Actualizar
-          </Button>
-        </div>
+        {(modal) => (
+          <div className="flex flex-col space-y-4">
+            <Button
+              onClick={async () => {
+                try {
+                  modal.close();
+                  await fetch(
+                    "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/5a391f7a-9c7b-4203-891c-da373d45eeea",
+                    { method: "POST" }
+                  );
+                } catch (error) {}
+              }}
+            >
+              Actualizar
+            </Button>
+          </div>
+        )}
       </ModalDownTrigger>
     </div>
   );

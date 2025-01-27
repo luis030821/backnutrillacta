@@ -12,7 +12,6 @@ import {
   RealmGoogleButton,
   useLogoutGoogle,
 } from "@llampukaq/realm-google-provider";
-import { useRouter } from "next/router";
 import { useEmailLogin } from "@llampukaq/realm-email-provider";
 import client from "@/client";
 import { useNutrillactaApi } from "@/hooks/useNutrillacta";
