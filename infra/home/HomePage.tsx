@@ -20,7 +20,6 @@ function HomePage() {
   const { isLogin } = useIsLogin();
   const { logout } = useLogoutGoogle();
   const { messagePromise } = useMessage();
-
   const { loginEmail } = useEmailLogin();
   const handleLogin = async (e: any) => {
     messagePromise(
